@@ -72,7 +72,8 @@ passport.deserializeUser(User.deserializeUser());
 
 
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/airbnb");
+  //await mongoose.connect("mongodb://localhost:27017/airbnb");
+  await mongoose.connect(process.env.ATLAS_URL);
 }
 
 main().then(()=>{
