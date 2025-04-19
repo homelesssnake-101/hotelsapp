@@ -27,6 +27,7 @@ router.get("/category/:category",wrapAsync(async(req,res,next)=>{
     const listingscategory = await Listing.find({category:category});
     
     
+    
     if(listingscategory.length === 0){
       
       req.flash("error","No listings found!");
