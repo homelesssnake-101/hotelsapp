@@ -22,6 +22,13 @@ router.get("/add",isLoggedIn,wrapAsync(async(req,res,next)=>{
     res.render("listings/add.ejs");
 }));
 
+router.get("/category/:category",wrapAsync(async(req,res,next)=>{
+    const category = req.params.category;
+    const listings = await Listing.find({category:category});
+    listingError(listings,next);
+    res.render("listings/index.ejs", { listings });
+}));
+
 router.post("/add",upload.single("image"),geocode,wrapAsync(async(req,res,next)=>{
     const listing = new Listing(req.body);
     listingError(listing,next);

@@ -1,37 +1,105 @@
 <% layout('layout/boilerplate.ejs') %>
+<div class="container" >
+  <div class="row mb-3" style="overflow-x: auto; overflow-y: hidden; flex-wrap: nowrap;">
+    <div class="col-md-1">
+      <i
+        class="fa-solid fa-umbrella-beach"
+        style="position: relative; left: 2rem"
+      ></i>
+      <p style="text-align: center">seashores</p>
+    </div>
+    <div class="col-md-1">
+      <i
+        class="fa-solid fa-mountain"
+        style="position: relative; left: 2rem"
+      ></i>
+      <p style="text-align: center">mountains</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-tree" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">forests</p>
+    </div>
+    <div class="col-md-1">
+      <i
+        class="fa-solid fa-building"
+        style="position: relative; left: 2rem"
+      ></i>
+      <p style="text-align: center">buildings</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-landmark-dome" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">domes</p>
+    </div>
+    <div class="col-md-1">
+      <i
+        class="fa-solid fa-landmark-flag"
+        style="position: relative; left: 2rem"
+      ></i>
+      <p style="text-align: center">landmarks</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-tree-city" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">cities</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-water-ladder" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">poolhouse</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-cow" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">farms</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-chess-rook" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">castles</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-money-bill" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">luxury</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-house-user" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">houses</p>
+    </div>
+    <div class="col-md-1">
+      <i class="fa-solid fa-sailboat" style="position: relative; left: 2rem"></i>
+      <p style="text-align: center">boats</p>
+    </div>
+  </div>
+ 
+</div>
+
 
 <div class="container-fluid">
-  <div class="row g-3 mt-4 mb-4 mx-4 px-4">
+  <div class="row g-3 mb-4 mx-4 px-4">
     <% listings.forEach(listing => { %>
-    <div class="col-md-4 col-sm-6 col-xs-12" >
-      
-      <div class="card index-card h-100" style="border: none;">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="card index-card h-100" style="border: none">
         <img
-        src="<%= listing.image.url %>"
-        alt="Card Image"
-        class="card-img-top rounded-4 object-fit-cover" style="width: 100%; height:31.25rem;"
-        
-      />
+          src="<%= listing.image.url %>"
+          alt="Card Image"
+          class="card-img-top rounded-4 object-fit-cover"
+          style="width: 100%; height: 31.25rem"
+        />
         <div class="card-body mt-0">
-
-          <h5 class="card-title mt-0 mb-0" ><%= listing.title %></h5>
-          <p class="card-text text-muted mb-0" ><%= listing.description %></p>
+          <h5 class="card-title mt-0 mb-0"><%= listing.title %></h5>
+          <p class="card-text text-muted mb-0"><%= listing.description %></p>
           <div class="row">
             <div class="col-md-8">
-              <p class="card-text d-inline-block" ><%= listing.location %></p>
+              <p class="card-text d-inline-block"><%= listing.location %></p>
 
-              <p class="card-text d-inline-block" >,<%= listing.country %></p>
+              <p class="card-text d-inline-block">,<%= listing.country %></p>
             </div>
-            <div class="col-md-4 text-end" style="padding-right: 1.25rem;">
-              <p class="card-text"><%= listing.price.toLocaleString('en-IN', { style: 'currency', currency: 'INR' }) %></p>
+            <div class="col-md-4 text-end" style="padding-right: 1.25rem">
+              <p class="card-text">
+                <%= listing.price.toLocaleString('en-IN', { style: 'currency',
+                currency: 'INR' }) %>
+              </p>
             </div>
           </div>
-
         </div>
       </div>
-      
     </div>
     <% }) %>
   </div>
-
 </div>
