@@ -1,0 +1,47 @@
+<% layout('layout/boilerplate.ejs') %>
+    
+        <div class="container" style="margin-top: 8rem;">
+            <div class="title">
+                <h1>Add a new listing</h1>
+            </div>
+            <form action="/listings/add" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="title" name="title" placeholder="title" pattern="^[a-zA-Z\s]+$" required>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="description" name="description" placeholder="description" required>
+                </div>
+                
+                     
+                <div class="row">
+                        <div class="col-md-8">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" placeholder="location" pattern="^[a-zA-Z\s]+$" required>
+                        </div>
+                        <div class="col-md-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" class="form-control" id="country" name="country" placeholder="country" pattern="^[a-zA-Z\s]+$" required>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" placeholder="price" pattern="^[0-9]+$" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="image" class="form-label" >Image</label>
+                        <input type="file" class="form-control" id="image" name="image" placeholder="image" value="image" required>
+                    </div>
+                    <div class="col-md-4 mt-auto">
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                
+                
+              </form>
+        </div>
+        <script src="" async defer></script>
+    

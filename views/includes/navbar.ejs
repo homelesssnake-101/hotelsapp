@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+    <div class="container-fluid" style="background-color: #ebf5e79a; border-bottom: 1px solid #c7a2a260;border-radius: 20px;font-size: 1rem;">
+       <i class="fa-solid fa-compass" style="font-size: 2rem;" onclick="window.location.href='/listings'"></i>
+       
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" style="width: 100%;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/listings">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/listings/add">add</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+
+          <% if(!user){ %>
+            
+          <li class="nav-item ms-auto">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Signup</a>
+          </li>
+          
+          <% } else { %>
+          <li class="nav-item ms-auto">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <% } %>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
