@@ -26,10 +26,10 @@ app.engine('ejs', engine);
 
 
 const listingRoutes = require("./routes/listings");
+const port = process.env.PORT || 3000;
 
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
