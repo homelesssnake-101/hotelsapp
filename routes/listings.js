@@ -24,9 +24,17 @@ router.get("/add",isLoggedIn,wrapAsync(async(req,res,next)=>{
 
 router.get("/category/:category",wrapAsync(async(req,res,next)=>{
     const category = req.params.category;
-    const listings = await Listing.find({category:category});
-    listingError(listings,next);
-    res.render("listings/index.ejs", { listings });
+    const listingscategory = await Listing.find({category:category});
+    
+    
+    if(listingscategory.length === 0){
+      
+      req.flash("error","No listings found!");
+       res.redirect("/listings");
+    }else{
+      res.render("listings/index.ejs", { listings:listingscategory });
+    }
+    
 }));
 
 router.post("/add",upload.single("image"),geocode,wrapAsync(async(req,res,next)=>{
@@ -52,7 +60,8 @@ router.post("/add",upload.single("image"),geocode,wrapAsync(async(req,res,next)=
           filename: listing.image.filename
       },
       lat: listing.lat,
-      lon: listing.lon
+      lon: listing.lon,
+      category: listing.category
 
   };
   
@@ -132,7 +141,8 @@ router.get("/:title", wrapAsync(async (req, res,next) => {
             filename: listing.image.filename
         },
         lat: listing.lat,
-        lon: listing.lon
+        lon: listing.lon,
+        category: listing.category
 
     };
     

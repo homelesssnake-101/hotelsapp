@@ -14,6 +14,7 @@ module.exports.listingSchema = Joi.object({
         reviews: Joi.array().optional().allow("",null),
         lat: Joi.number().optional().allow("",null),
         lon: Joi.number().optional().allow("",null),
+        category: Joi.string().required().valid("seashores", "mountains", "forests", "buildings", "domes", "landmarks", "cities", "poolhouse", "farms", "castles", "luxury", "houses", "boats"),
     
 }).required();
 module.exports.titleSchema = Joi.object({

@@ -35,6 +35,10 @@ const listingSchema = new Schema({
     },
     lat: Number,
     lon: Number,
+    category: {
+        type: String,
+        enum: ["seashores", "mountains", "forests", "buildings", "domes", "landmarks", "cities", "poolhouse", "farms", "castles", "luxury", "houses", "boats"],
+    }
 });
 
 listingSchema.post("findOneAndDelete", async function(listing){
