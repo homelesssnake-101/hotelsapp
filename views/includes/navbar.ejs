@@ -15,8 +15,11 @@
             <a class="nav-link" href="/listings/add" style="margin-right: 35rem;">add a listing</a>
           </li>
           <li class="nav-item">
-            <input type="text" placeholder="search" class="form-control" style="width: 10rem; border-radius: 20px; border: 1px solid #663b3b60; display:inline-block;">
-            <i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem;display:inline-block; position: relative; top:0.2rem;left:0.2rem;"></i>
+            <form action="/listings/search" method="get">
+            <input type="text" placeholder="search" class="form-control" name="search" style="width: 10rem; border-radius: 20px; border: 1px solid #663b3b60; display:inline-block;">
+              <button type="submit" style="border: none; background-color: transparent;"><i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem;display:inline-block; position: relative; top:0.2rem;left:0.2rem;"></i></button>
+            </form>
+
           </li>
           
 

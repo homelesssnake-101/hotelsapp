@@ -1,5 +1,6 @@
 <% layout('layout/boilerplate.ejs') %>
 <div class="container" >
+
   <div class="row mb-3" style="overflow-x: auto; overflow-y: hidden; flex-wrap: nowrap;">
     <div class="col-md-1 category ">
       <i
@@ -66,6 +67,12 @@
       <p style="text-align: center">boats</p>
     </div>
   </div>
+  <% if(typeof category !== 'undefined'){ %>
+    <h1 style="text-align: center; font-size: 2rem; font-weight: bold; margin-top: 2rem;">category: <%= category %></h1>
+    <% } %>
+    <% if(typeof search !== 'undefined'){ %>
+    <h1 style="text-align: center; font-size: 2rem; font-weight: bold; margin-top: 2rem;">results for "<%= search %>"</h1>
+    <% } %>
  
 </div>
 

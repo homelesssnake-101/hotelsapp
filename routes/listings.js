@@ -32,10 +32,30 @@ router.get("/category/:category",wrapAsync(async(req,res,next)=>{
       req.flash("error","No listings found!");
        res.redirect("/listings");
     }else{
-      res.render("listings/index.ejs", { listings:listingscategory });
+      res.render("listings/index.ejs", { listings:listingscategory ,category:category});
     }
     
 }));
+
+
+router.get("/search",wrapAsync(async(req,res,next)=>{
+    const search = req.query.search;
+    const titlematches = await Listing.find({title:{$regex:search, $options:"i"}});
+    const locationmatches = await Listing.find({location:{$regex:search, $options:"i"}});
+    const countrymatches = await Listing.find({country:{$regex:search, $options:"i"}});
+    const categorymatches = await Listing.find({category:{$regex:search, $options:"i"}});
+    const listingssearch = [...titlematches, ...locationmatches, ...countrymatches, ...categorymatches];
+
+    if(listingssearch.length === 0){
+      req.flash("error","No listings found!");
+      res.redirect("/listings");
+    }else{
+      res.render("listings/index.ejs", { listings:listingssearch ,search:search});
+    }
+}));
+
+
+
 
 router.post("/add",upload.single("image"),geocode,wrapAsync(async(req,res,next)=>{
     const listing = new Listing(req.body);
