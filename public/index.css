@@ -28,6 +28,7 @@
     opacity: 0.8;
     transition: 0.3s;
 }
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -61,3 +62,4 @@
     transition: 0.3s;
     cursor: pointer;
   }
+
