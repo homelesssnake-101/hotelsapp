@@ -11,3 +11,13 @@ cards.forEach((card) => {
   });
 });
 
+const category = document.querySelectorAll(".category");
+category.forEach((category) => {
+  category.addEventListener("click", async (e) => {
+    console.log("clicked");
+    let paragraph = category.querySelector("p");
+    let categoryName = paragraph.textContent;
+    window.location.href = `/listings/category/${categoryName}`;
+  });
+});
+

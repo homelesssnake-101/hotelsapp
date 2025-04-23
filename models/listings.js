@@ -1,17 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const listings = require("../init/data");
+
 const Review = require("./reviewa");
 const {reviewSchema} = require("./reviewa");
 const User = require("./user");
-async function main() {
-    await mongoose.connect("mongodb://localhost:27017/airbnb");
-  }
-  
-  main().then(()=>{
-      console.log("Connected to MongoDB");
-  }).catch((err) => console.log(err));
-  
+
 
 
 const listingSchema = new Schema({
@@ -35,6 +28,10 @@ const listingSchema = new Schema({
     },
     lat: Number,
     lon: Number,
+    category: {
+        type: String,
+        enum: ["seashores", "mountains", "forests", "buildings", "domes", "landmarks", "cities", "poolhouse", "farms", "castles", "luxury", "houses", "boats"],
+    }
 });
 
 listingSchema.post("findOneAndDelete", async function(listing){
@@ -47,28 +44,7 @@ listingSchema.post("findOneAndDelete", async function(listing){
 const Listing = mongoose.model("Listing", listingSchema);
 
 module.exports = Listing;
-async function initDB(){
-await Listing.deleteMany({});
-/*await Listing.insertMany(listings.map(listing=>{
-    return {
-        ...listing, owner: "67ffeff870dfcc29931d6c3c"
-    }
-}));*/
-console.log("Database initialized");
-}
-async function addReview(){
-const hotel= await Listing.findOne({title: "Tokyo City Capsule" });
-const rev = new Review({
-    rating: 5,
-    comment: "Great hotel, very clean and comfortable",
-    user: "John Doe",
-});
-await rev.save();
-hotel.reviews.push(rev);
-await hotel.save();
-}
 
 
 
-// Uncomment this line to test the cascading deletion
-// testDeleteListing();
+
